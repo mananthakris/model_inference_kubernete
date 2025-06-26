@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dogcat-classifier-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dogcat-classifier
+  template:
+    metadata:
+      labels:
+        app: dogcat-classifier
+    spec:
+      containers:
+        - name: dogcat-classifier
+          image: dogcat-classifier:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 90
